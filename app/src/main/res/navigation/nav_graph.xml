@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="app.phhuang.training.ui.main.MainFragment"
+        android:label="臺北市立動物園"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainFragment_to_areaDetailFragment"
+            app:destination="@id/areaDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/areaDetailFragment"
+        android:name="app.phhuang.training.ui.main.AreaDetailFragment"
+        android:label="{title}">
+        <action
+            android:id="@+id/action_areaDetailFragment_to_plantDetailFragment"
+            app:destination="@id/plantDetailFragment">
+            <argument
+                android:name="plantArg"
+                android:defaultValue="-1" />
+        </action>
+        <argument
+            android:name="areaId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="title"
+            android:defaultValue="Detail"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/plantDetailFragment"
+        android:name="app.phhuang.training.ui.main.PlantDetailFragment"
+        android:label="{title}">
+        <argument
+            android:name="plantId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            android:defaultValue="Plant detail"
+            app:argType="string" />
+    </fragment>
+</navigation>
